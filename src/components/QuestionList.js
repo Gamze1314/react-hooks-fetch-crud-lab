@@ -1,10 +1,10 @@
 import React from "react";
 import QuestionItem from "./QuestionItem";
 
-function QuestionList({ questions }) {  
+function QuestionList({ questions , onDeleteQuestion }) {  
 
   const lis = questions.map((obj) => { 
-    return <QuestionItem key={obj.id} question={obj}/>
+    return <QuestionItem key={obj.id} onDeleteQuestion={onDeleteQuestion} question={obj}  />
   })
 
 

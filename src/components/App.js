@@ -22,10 +22,18 @@ function App() {
 
   console.log(questions) // state updated
 
+function handleDeleteQuestion(q) {
+  setQuestions(prevQuestions => {
+    // Create a new array that removes the deleted question from the list
+    const updatedList = prevQuestions.filter(question => question.id !== q.id);
+    // Return the updated list as the new state value
+    return updatedList;
+  });
+}
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm  setQuestions={setQuestions} /> : <QuestionList questions={questions} setQuestions={setQuestions} />}
+      {page === "Form" ? <QuestionForm  setQuestions={setQuestions} /> : <QuestionList questions={questions} onDeleteQuestion={handleDeleteQuestion}  />}
     </main>
   );
 }
